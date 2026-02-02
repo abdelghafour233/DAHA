@@ -1,0 +1,5 @@
+{
+  "name": "محول الصور الذكي (AI Image Transformer)",
+  "description": "تطبيق ويب لتحويل وتعديل الصور باستخدام الذكاء الاصطناعي (Google Gemini). واجهة عربية عصرية.",
+  "requestFramePermissions": []
+}

@@ -1,11 +1,56 @@
-<div align="center">
+# محول الصور الذكي (AI Image Transformer)
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+تطبيق ويب حديث مبني باستخدام React و Tailwind CSS، يسمح للمستخدمين برفع الصور وتعديلها باستخدام الذكاء الاصطناعي (Google Gemini 2.5 Flash API).
 
-  <h1>Built with AI Studio</h2>
+## المميزات
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+*   ✅ **رفع الصور بسهولة**: دعم السحب والإفلات.
+*   ✅ **تحويل ذكي**: استخدام Gemini لتعديل الصور بناءً على الأوامر النصية.
+*   ✅ **واجهة عربية**: تصميم متجاوب (Responsive) ويدعم RTL.
+*   ✅ **سريع وآمن**: معالجة مباشرة عبر واجهة برمجة التطبيقات.
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## المتطلبات
 
-</div>
+*   Node.js (v18+)
+*   مفتاح API من Google AI Studio (مجاني).
+
+## طريقة التشغيل محلياً
+
+1.  تأكد من وجود الملفات في مجلد المشروع.
+2.  قم بإنشاء ملف `.env` في المجلد الرئيسي وضع فيه مفتاح الـ API الخاص بك:
+    ```
+    API_KEY=your_google_api_key_here
+    ```
+    *ملاحظة: في بيئات التطوير الحقيقية (Vite)، يجب استخدام بادئة `VITE_` للمتغيرات، لكن هذا المشروع مصمم ليتم تشغيله في بيئة يتم فيها حقن `process.env.API_KEY` مباشرة أو عبر إعدادات الخادم.*
+
+3.  قم بتثبيت الحزم (إذا كنت تستخدم بيئة Node محلية):
+    ```bash
+    npm install react react-dom lucide-react @google/genai
+    npm install -D tailwindcss postcss autoprefixer vite @vitejs/plugin-react
+    ```
+
+4.  تشغيل المشروع:
+    ```bash
+    npm run dev
+    ```
+
+## النشر على Vercel
+
+هذا المشروع جاهز للنشر على Vercel بخطوات بسيطة:
+
+1.  ارفع الكود إلى مستودع **GitHub**.
+2.  اذهب إلى [Vercel Dashboard](https://vercel.com) واضغط على **"Add New Project"**.
+3.  اختر المستودع الذي قمت برفعه.
+4.  في إعدادات المشروع (Configure Project):
+    *   **Environment Variables**: أضف متغير جديد باسم `API_KEY` وضع فيه مفتاح Google Gemini API الخاص بك.
+5.  اضغط **Deploy**.
+
+## شرح الكود
+
+*   `services/geminiService.ts`: يحتوي على المنطق الخاص بالاتصال بـ Google Gemini. نستخدم النموذج `gemini-2.5-flash-image` لأنه مخصص لمعالجة الصور بسرعة وكفاءة.
+*   `components/`: يحتوي على واجهة المستخدم المجزأة (الأزرار، الهيدر، إلخ).
+*   `App.tsx`: يدير حالة التطبيق (الصورة المرفوعة، نص الأمر، النتيجة).
+
+## ملاحظة هامة
+
+يستخدم التطبيق `process.env.API_KEY`. عند النشر، تأكد من أن منصة الاستضافة توفر هذا المتغير للكود أثناء وقت البناء أو التشغيل.
