@@ -1,13 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
 
-// Ensure API Key is available
-const API_KEY = process.env.API_KEY;
-
-if (!API_KEY) {
-  console.error("API_KEY is missing from environment variables.");
-}
-
-const ai = new GoogleGenAI({ apiKey: API_KEY || '' });
+// The API key must be obtained exclusively from the environment variable process.env.API_KEY.
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 /**
  * Transforms an image based on a text prompt using Gemini 2.5 Flash Image.
